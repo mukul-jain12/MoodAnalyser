@@ -1,17 +1,25 @@
 package com.moodanalyser;
 
-public class MoodAnalyser {
-	public static void main(String args[]) {
-		System.out.println("Mood Analyser");
+public class MoodAnalyser {	
+	private String message;
 
-		MoodAnalyser moodAnalyser = new MoodAnalyser();
-		String message = moodAnalyser.analyseMood("I am Happy");
-		System.out.println(message);
-		message = moodAnalyser.analyseMood("I am Sad");
-		System.out.println(message);
-	}
+    public MoodAnalyser() {
+        this.message = null;
+    }
 
-	public String analyseMood(String message) {
+    public MoodAnalyser(String message) {
+        this.message = message;
+    }
+    
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+	
+	public String analyseMood() {
 		if (message.toLowerCase().contains("happy") || message.toLowerCase().contains("any")) {
 			return "HAPPY";
 		}
@@ -21,5 +29,17 @@ public class MoodAnalyser {
 		else {
 			return null;
 		}
+	}
+	
+	public static void main(String args[]) {
+		System.out.println("Mood Analyser");
+
+		MoodAnalyser moodAnalyser = new MoodAnalyser();
+		
+		moodAnalyser.setMessage("I am Happy");
+		System.out.println(moodAnalyser.analyseMood());
+
+		moodAnalyser.setMessage("I am Sad");
+		System.out.println(moodAnalyser.analyseMood());
 	}
 }
