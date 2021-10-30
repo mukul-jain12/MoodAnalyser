@@ -20,14 +20,16 @@ public class MoodAnalyser {
 	}
 
 	public String analyseMood() {
-		if (message.toLowerCase().contains("happy") || message.toLowerCase().contains("any")) {
+		try {
+			if (message.toLowerCase().contains("sad")) {
+				return "SAD";
+			}
+			else {
+				return "HAPPY";
+			}
+		}
+		catch (NullPointerException e) {
 			return "HAPPY";
-		}
-		else if (message.toLowerCase().contains("sad")) {
-			return "SAD";
-		}
-		else {
-			return null;
 		}
 	}
 
@@ -38,8 +40,11 @@ public class MoodAnalyser {
 
 		moodAnalyser.setMessage("I am Happy");
 		System.out.println(moodAnalyser.analyseMood());
-
+		
 		moodAnalyser.setMessage("I am Sad");
+		System.out.println(moodAnalyser.analyseMood());
+
+		moodAnalyser.setMessage(null);
 		System.out.println(moodAnalyser.analyseMood());
 	}
 }
